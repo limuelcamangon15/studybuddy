@@ -6,12 +6,12 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen">
       <Default>
-        <main className="flex flex-col w-full items-center justify-center">
-          <section className="flex flex-col items-center gap-4 py-16 px-6">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Hello, <span className="text-gray-600">Guest!</span>
-            </h1>
+        <main className="flex flex-col w-full min-h-full items-center justify-center gap-4">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+            Hello, <span className="text-gray-600">Guest!</span>
+          </h1>
 
+          <div>
             <p className="text-lg text-gray-600 max-w-xl">
               Welcome to <span className="text-highlight">StudyBuddy</span> —
               your one-stop platform for studying smarter.
@@ -26,9 +26,9 @@ export default function Home() {
                 Create your free account.
               </Link>
             </p>
+          </div>
 
-            <FormChat />
-          </section>
+          <FormChat />
         </main>
       </Default>
     </div>

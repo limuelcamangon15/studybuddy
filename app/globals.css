@@ -47,10 +47,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(70, 69, 69);
+  background-color: rgba(255, 255, 255, 0);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(53, 53, 53);
+  background-color: rgb(164, 154, 154);
   border-radius: 10px;
+  cursor: grab;
 }

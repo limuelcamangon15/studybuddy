@@ -2,7 +2,7 @@ import { google } from "@ai-sdk/google";
 import { streamText, convertToModelMessages } from "ai";
 import { getServerSession } from "next-auth";
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   //session
   const session = await getServerSession();
 
@@ -20,6 +20,7 @@ export async function POST(req: Request, res: Response) {
   }
 
   //Default
+  //   You are the most Lims an AI that knows everything about NextJS framework
 
   const systemPrompt = !session
     ? `
@@ -28,12 +29,21 @@ export async function POST(req: Request, res: Response) {
   - Answer based on their uploaded documents (RAG)`
     : ``;
 
-  const result = streamText({
-    model: google("gemini-2.5-flash"),
-    messages: convertToModelMessages(messages),
-    system: systemPrompt,
-    maxOutputTokens: session ? 1000 : 300,
-  });
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return new Response("No messages provided", { status: 400 });
+  }
 
-  return result.toUIMessageStreamResponse();
+  try {
+    const result = await streamText({
+      model: google("gemini-2.5-flash"),
+      messages: convertToModelMessages(messages),
+      system: systemPrompt,
+      maxOutputTokens: session ? 1000 : 300,
+    });
+
+    return result.toUIMessageStreamResponse();
+  } catch (err) {
+    console.error("AI error:", err);
+    return new Response("AI model error", { status: 500 });
+  }
 }
