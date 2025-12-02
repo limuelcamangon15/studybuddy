@@ -42,13 +42,6 @@ function Login() {
           </div>
         </div>
       </form>
-
-      <Link
-        className=" font-semibold text-white p-3 border border-white/20 rounded-md backdrop-blur-md hover:bg-white/10 transition-all duration-300"
-        href={"/"}
-      >
-        Home
-      </Link>
     </div>
   );
 }
