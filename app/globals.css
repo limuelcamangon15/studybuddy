@@ -29,10 +29,28 @@ body {
   @apply tracking-tighter text-2xl font-semibold bg-linear-to-r from-gray-600 to-white/80 bg-clip-text text-transparent;
 }
 
+.text-highlight {
+  @apply tracking-tighter text-lg font-semibold bg-linear-to-r from-gray-600 to-white/80 bg-clip-text text-transparent;
+}
+
 .button-primary {
-  @apply w-50 font-semibold text-center text-black p-2 rounded-md bg-white/50 hover:bg-white/30 transition-all duration-300;
+  @apply w-50 font-semibold text-center text-black p-2 rounded-xl bg-white/50 hover:bg-white/30 transition-all duration-300;
 }
 
 .button-secondary {
-  @apply w-50 font-semibold text-center text-white p-2 border border-white/20 rounded-md backdrop-blur-md hover:bg-white/10 transition-all duration-300;
+  @apply w-50 font-semibold text-center text-white p-2 border border-white/20 rounded-xl backdrop-blur-md hover:bg-white/10 transition-all duration-300;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(70, 69, 69);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(53, 53, 53);
+  border-radius: 10px;
 }
