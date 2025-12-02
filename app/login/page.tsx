@@ -1,13 +1,14 @@
 import Link from "next/link";
+import Default from "../templates/Default";
 
 function Login() {
   return (
-    <div className="flex flex-col gap-5 justify-center items-center min-h-screen w-full">
+    <Default>
+      <h1 className="font-semibold">Login to StudyBuddy</h1>
       <form
         action=""
         className="w-110 flex flex-col gap-5 justify-center items-center bg-white/10 rounded-md p-5"
       >
-        <h1 className="font-semibold">Login to StudyBuddy</h1>
         <input
           type="email"
           name="email"
@@ -33,7 +34,7 @@ function Login() {
               Don't have an account?
               <Link
                 className="font-semibold text-white transition-all duration-300"
-                href={"/"}
+                href={"/signup"}
               >
                 {" "}
                 Sign up
@@ -42,7 +43,7 @@ function Login() {
           </div>
         </div>
       </form>
-    </div>
+    </Default>
   );
 }
 
