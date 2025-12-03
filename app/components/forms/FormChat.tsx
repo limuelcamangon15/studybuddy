@@ -71,8 +71,8 @@ export default function FormChat() {
               {/* Avatar */}
               <div
                 className={`h-10 w-10 flex items-center justify-center rounded-full ${
-                  message.role === "user" ? "bg-black/50" : "bg-gray-900"
-                }  border`}
+                  message.role === "user" ? "bg-black/30" : "bg-gray-700"
+                }`}
               >
                 {message.role === "user" ? <UserRound /> : <Bot />}
               </div>
@@ -80,7 +80,9 @@ export default function FormChat() {
               {/* Message Content */}
               <div
                 className={`${
-                  message.role === "user" ? "bg-gray-700/30" : "bg-gray-900"
+                  message.role === "user"
+                    ? "bg-gray-700"
+                    : "border border-white/20 backdrop-blur-md drop-shadow-2xl shadow-gray-700"
                 }  rounded-lg p-4 max-w-[80%] text-gray-200 shadow-md`}
               >
                 <div className="prose prose-invert max-w-none prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-md prose-code:text-gray-200 prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded">

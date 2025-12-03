@@ -1,14 +1,21 @@
 import Link from "next/link";
 import Default from "./templates/Default";
 import FormChat from "./components/forms/FormChat";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./lib/authOptions";
 
-export default function Home() {
+export default async function Home() {
+  const session = (await getServerSession(authOptions)) ?? null;
+
   return (
     <div className="w-full min-h-screen">
       <Default>
         <main className="flex flex-col w-full min-h-full items-center justify-center gap-4">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            Hello, <span className="text-gray-600">Guest!</span>
+            Hello,{" "}
+            <span className="text-gray-600">
+              {session && session.user ? session.user.name : "Guest"}!
+            </span>
           </h1>
 
           <div>
@@ -17,14 +24,16 @@ export default function Home() {
               your one-stop platform for studying smarter.
             </p>
 
-            <p className="text-gray-600 max-w-2xl">
-              Upload your notes and get instant AI-powered study help.{" "}
-              <Link
-                href="/signup"
-                className="text-gray-600 font-semibold hover:underline hover:text-gray-700 transition"
-              >
-                Create your free account.
-              </Link>
+            <p className="text-gray-600 max-w-2xl text-center">
+              Upload your notes and get instant AI-powered study help.
+              {!session && (
+                <Link
+                  href="/signup"
+                  className="text-gray-600 font-semibold hover:underline hover:text-gray-700 transition"
+                >
+                  Create your free account.
+                </Link>
+              )}
             </p>
           </div>
 

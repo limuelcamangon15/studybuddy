@@ -1,49 +1,46 @@
-import Link from "next/link";
-import Default from "../templates/Default";
+import React from "react";
+import Bare from "../templates/Bare";
+import FormLogin from "../components/forms/FormLogin";
+import Logo from "../components/logo/Logo";
 
 function Login() {
   return (
-    <Default>
-      <h1 className="font-semibold">Login to StudyBuddy</h1>
-      <form
-        action=""
-        className="w-110 flex flex-col gap-5 justify-center items-center bg-white/10 rounded-md p-5"
-      >
-        <input
-          type="email"
-          name="email"
-          id=""
-          placeholder="Enter your email"
-          className="py-2 px-3 outline-0 border border-white/10 rounded-md w-full"
-        />
+    <Bare className="gap-5 py-10 px-6 md:gap-30 md:px-16 lg:px-24 flex flex-col sm:flex-col-reverse md:flex-row items-center justify-between">
+      {/* LEFT — Intro text*/}
+      <div className="flex flex-col gap-6 max-w-xl text-left">
+        <h1 className="text-3xl font-bold leading-tight bg-linear-to-br from-white to-white/60 bg-clip-text text-transparent">
+          Welcome to
+          <br />
+          <Logo className="big-text" />
+        </h1>
 
-        <input
-          type="password"
-          name="email"
-          id=""
-          placeholder="Enter your password"
-          className="py-2 px-3 outline-0 border border-white/10 rounded-md w-full"
-        />
+        <p className="text-lg text-white/70 leading-relaxed max-w-md">
+          Your personal companion for learning smarter, faster, and with
+          confidence. Create an account to unlock tailored study assistance,
+          document-aware tutoring, and AI-powered explanations adapted just for
+          you.
+        </p>
 
-        <div className="w-full flex flex-col gap-3 justify-center items-center">
-          <button className="w-full cursor-pointer font-semibold text-white p-2 bg-black rounded-md backdrop-blur-md hover:bg-black/60 transition-all duration-300">
-            Login
-          </button>
-          <div className="text-white/70">
-            <span>
-              Don't have an account?
-              <Link
-                className="font-semibold text-white transition-all duration-300"
-                href={"/signup"}
-              >
-                {" "}
-                Sign up
-              </Link>
-            </span>
-          </div>
-        </div>
-      </form>
-    </Default>
+        <ul className="text-white/60 text-sm space-y-2 mt-2">
+          <li className="flex items-center gap-2">
+            <span className="text-green-400">✓</span> Personalized explanations
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="text-green-400">✓</span> Upload notes & get
+            document-aware help
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="text-green-400">✓</span> Improve your study
+            workflow
+          </li>
+        </ul>
+      </div>
+
+      {/* RIGHT — LOGIN FORM */}
+      <div className="w-full max-w-sm mt-10 md:mt-0">
+        <FormLogin />
+      </div>
+    </Bare>
   );
 }
 
