@@ -62,7 +62,7 @@ export default function FormChat() {
           {messages.map((message) => (
             <div
               key={message.id}
-              className={` flex gap-3 p-2 ${
+              className={`flex gap-3 p-2 ${
                 message.role === "user"
                   ? "flex-row-reverse text-right"
                   : "flex-row text-left"
@@ -71,21 +71,30 @@ export default function FormChat() {
               {/* Avatar */}
               <div
                 className={`h-10 w-10 flex items-center justify-center rounded-full ${
-                  message.role === "user" ? "bg-black/50" : "bg-gray-700"
+                  message.role === "user" ? "bg-black/50" : "bg-gray-900"
                 }  border`}
               >
                 {message.role === "user" ? <UserRound /> : <Bot />}
               </div>
 
               {/* Message Content */}
-              <div className="bg-gray-900 rounded-md p-3 max-w-[80%]">
-                {message.parts.map((part, i) => (
-                  <div key={i} className="prose prose-sm">
-                    {part.type === "text" && (
-                      <ReactMarkdown>{part.text}</ReactMarkdown>
-                    )}
-                  </div>
-                ))}
+              <div
+                className={`${
+                  message.role === "user" ? "bg-gray-700/30" : "bg-gray-900"
+                }  rounded-lg p-4 max-w-[80%] text-gray-200 shadow-md`}
+              >
+                <div className="prose prose-invert max-w-none prose-pre:bg-gray-800 prose-pre:p-4 prose-pre:rounded-md prose-code:text-gray-200 prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded">
+                  {message.parts.map((part, i) => (
+                    <div
+                      key={i}
+                      className="prose prose-invert leading-relaxed flex flex-col gap-3"
+                    >
+                      {part.type === "text" && (
+                        <ReactMarkdown>{part.text}</ReactMarkdown>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

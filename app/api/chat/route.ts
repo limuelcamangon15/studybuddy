@@ -1,7 +1,7 @@
 import { google } from "@ai-sdk/google";
 import { streamText, convertToModelMessages } from "ai";
 import { getServerSession } from "next-auth";
-export const runtime = "nodejs";
+
 export async function POST(req: Request) {
   //session
   const session = await getServerSession();
@@ -26,7 +26,9 @@ export async function POST(req: Request) {
     ? `
   You are StudyBuddy, a friendly virtual tutor. If the user is not logged in; politely explain that signing in will unlock: 
   - Personalized tutoring and chat experience. 
-  - Answer based on their uploaded documents (RAG)`
+  - Answer based on their uploaded documents (RAG)
+  
+  do not talk about anything not related to studies`
     : ``;
 
   if (!Array.isArray(messages) || messages.length === 0) {
